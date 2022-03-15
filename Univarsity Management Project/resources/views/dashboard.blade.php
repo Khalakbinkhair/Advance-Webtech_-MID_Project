@@ -58,16 +58,26 @@ height:50px;
 
 
 }
+#d9{
+	
+    position: fixed;
 
-</style>
 
-       
+top: 300px;
+left: 500px;
 
-<style>
+ width: 700px;
+height:50px;
+
+
+}
+
+
         .navbar{
            
             text-align: center;
-            top: 200px;
+            top: -150px;
+            left:-500px;
         }
 
         .navbar a{
@@ -102,12 +112,11 @@ height:50px;
         .dropdown-container:hover .dropdown-content{
             display: block;
         }
-    </style>
-
-<style>
+ 
         .nbar{
            
             text-align: center;
+            
            
         }
 
@@ -123,7 +132,9 @@ height:50px;
         .ddown-container{
             display: inline;
             position: absolute;
-            top: 250px;
+         
+            top: 50px;
+            left:-500px;
           
         }
 
@@ -166,7 +177,7 @@ height:50px;
     @if(Session ::has('msg'))
 <span>{{Session::get('msg')}}</span>
 @endif
-<h3><u>Welcome To  {{session::get('name')}}</u>
+<h3><u>Welcome To <a href='{{route('coursereg')}}'> {{session::get('name')}}</a></u>
 </div>
 
 
@@ -183,10 +194,12 @@ height:50px;
 </center>
 
 
+
+
 </head>
 <body>
+<div id="d9">
     
-
     <div class="navbar">
        
    

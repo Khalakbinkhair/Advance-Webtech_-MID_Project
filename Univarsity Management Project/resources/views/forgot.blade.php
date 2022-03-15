@@ -45,7 +45,7 @@ left: 650px;
 <h3> Hello </h3>
   {{$user->name}}
   <p> please click the password reset button to reset your Password 
-      <a href="{{route('reset_password/'.$user->email.'/'.$code)}}">Reset Password</a>
+      <a href="{{url('reset_password/'.$user->email.'/'.$code)}}">Reset Password</a>
 
 
 </div>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\result;
-use  App\Models\acalender;
 use  App\Models\finance;
 use  App\Models\registration;
+use  App\Models\teacher_notice;
+
+
 
 use PDF;
 
@@ -14,9 +16,16 @@ class HomeController extends Controller
 {
   public function dashboard(Request $req){
 
+   
+
     return view('dashboard');
 
   
+  } 
+
+  public function dashcourse(){
+
+    return view('dashboard');
   } 
 
  public function course(){
@@ -28,6 +37,8 @@ public function coursesub(Request $req){
  
 $sem=result::where('session',$req->Semester)
 ->get();
+
+
 
   return view('course.showcourse')
   ->with('sem',$sem);
@@ -78,14 +89,7 @@ public function pdfdownload(){
   
  
 } 
-public function acalender(){
 
-  $calender=acalender::all();
-
-  
-  return view('acalender')
-  ->with('calender',$calender);
-} 
 
 
 public function finance(){
@@ -97,8 +101,8 @@ public function finance(){
   $utility=finance::sum('utility');
   
 
-  $balance=finance::sum('balance');
-    $tot= $balance - ($debit + $credit + $utility);
+  $balance= ($credit - $debit);
+   
 
   
   return view('financ')
@@ -106,7 +110,7 @@ public function finance(){
   ->with('debit',$debit )
   ->with('credit',$credit)
   ->with('balance',$balance)
-  ->with('tot',$tot)
+  
   ;
 
   
@@ -146,6 +150,14 @@ public function reg(Request $req){
    
     
   }
+
+  public function noti(){
+
+    $notice=teacher_notice::all();
+
+    return view('noti')
+    ->with('notice',$notice);
+  } 
 
 
 }

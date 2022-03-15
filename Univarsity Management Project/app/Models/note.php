@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class acalender extends Model
+class note extends Model
 {
     use HasFactory;
-    public $timestamps=false;
+
+    public function course(){
+        return $this->belongsTo(Course::class,'c_id');
+    }
 }

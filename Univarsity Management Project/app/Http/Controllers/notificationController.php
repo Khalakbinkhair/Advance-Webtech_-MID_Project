@@ -3,25 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\course;
+use App\Models\registration;
+use App\Models\department;
+use App\Models\teacher_notice;
+use App\Models\note;
 
-use  App\Models\department;
-use  App\Models\course;
 
 
 class notificationController extends Controller
 {
-    public function  departments (){
+    public function coursereg(){
+
+        $name=session()->get('userid');    
+        $info=registration::where('userid',$name)->first(); 
 
 
-        $store=department::all();
-        return view('notification.dept')
-        ->with('store',$store);
-    }
+        return view('notification.reg')
+        ->with('info', $info);
 
-    public function courses($cid){
-        
-        $store=course::where('cid',$cid)->first();
-        return view('notification.course')
-        ->with('store',$store);
-    }
+    } 
+
+    public function schedule(Request $req){
+
+        $d=registration::where('userid',$req->userid)->first();
+
+   
+           return view('notification.course')
+           ->with('d',$d);
+   
+       } 
+       public function notify(Request $req){
+
+        $course=course::where('name',$req->name)->first();
+         
+       
+
+       
+   
+   
+           return view('notification.notify')
+           ->with('course',$course);
+   
+       } 
+
 }

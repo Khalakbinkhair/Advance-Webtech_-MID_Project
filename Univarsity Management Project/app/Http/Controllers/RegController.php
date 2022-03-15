@@ -55,8 +55,8 @@ class RegController extends Controller
          $user->userid= $req->userid;
          $user->email= $req->email;
          $user->address= $req->address;
-         $user->password= $req->password;
-         $user->cpassword= $req->cpassword;
+         $user->password= md5($req->password);
+         $user->cpassword= md5($req->cpassword);
          $user->gender = $req->gender;
          $user->usertype=$req->usertype;
          $user->blood_group=$req->blood_group;
@@ -76,10 +76,15 @@ class RegController extends Controller
     }
     public function logsubmit(Request $req){
 
+
+
+
+
         $user= registration::where ("userid",$req->userid)
-        ->where('password',$req->password)
+        ->where('password',md5($req->password))
         ->where('usertype','=','Student')
         ->first();
+  
         
 
         if($user)
@@ -95,6 +100,7 @@ class RegController extends Controller
            $req->session()->flash('msg',"Login Successful");
             return view('dashboard')
             ->with('user',$user);
+         
             
         }
         else{
@@ -134,6 +140,8 @@ class RegController extends Controller
  
 
     } 
+
+   
     public function editsub(Request $req){
 
      
@@ -199,13 +207,17 @@ return view('forgotpassword');
 
     } 
     public function forgot_pass(Request $req){
+   
 
-   $user= registration::whereemail($req->email)->first();
+   $user= registration::where('email',($req->email))->first();
    if($user==null){
        return redirect()->back()->with(['error'=>'Existing Email Unvalid']);
    }
         
-   $user= Sentinel::findById($user->id);
+   $user= Sentinel::authenticate(array(
+    'email'    => $req->email,
+));
+
    $reminder= Reminder:: exists($user)? :Reminder::create($user);
    $this->sendEmail($user,$reminder->code);
 
@@ -225,6 +237,6 @@ Mail::send(
 );
 
 
-}
+ }
 
 }

@@ -52,11 +52,26 @@
        </div>
        <div id="d2">
 
-       @foreach($store as $li) 
-       {{$li->name}}
+   
+       <table align ="center"  class='table table-bordered'>
+<tr>
+    <td><h3>Headline<h3></td>
 
-       @endforeach
+<td><h3>Notice</h3></td>
+</tr>
 
+@foreach($notice as $s)
+<tr>
+    <td>{{$s->headline}}</td>
+
+<td>{{$s->whole}}</td>
+</tr>
+
+
+@endforeach
+</table>
+<a href='../dashboard'style="color:black" class="btn btn-outline-secondary">Back</a>
 
 </div>
-@end('content')
+
+@endsection

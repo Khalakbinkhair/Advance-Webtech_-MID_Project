@@ -32,7 +32,7 @@
 	
 	position:  fixed;	
   top:180px;
-  left:	350px;
+  left:	550px;
 }
 
 
@@ -56,28 +56,38 @@
 
        
     
-     <div>
-    <h2 class='label label-scondary'>{{$d->name}}</h2>
+   
+    <h2 class='label label-scondary'>
+
+    
+@foreach($d->courses as $s)
+
+<tr>
+<td>{{$s->name}}</td>      
+<td> {{$s->schedule}}</td>      
+<td> {{$s->credit}}</td>      
+</tr>
+
+@endforeach
+
+    </h2>
 </div>
 
      <table class='table table-bordered'>
 
      <tr>
 <th>Course Name</th>      
-<th> Schedule</th>      
-     
-</tr>
-
-
-@foreach($d->courses as $s)
-
-<tr>
-<td><h3><a href={{route('notify',['name'=>$d->name])}} style="color: #241571">{{$s->name}}</h3></td>     </a> 
-<td><h3> {{$s->schedule}}</h3></td>      
+<th> Directory</th>      
       
 </tr>
+@foreach($course->notes as $s)
+<tr>
+<td><h3>{{$s->name}}</h3></td>
 
+
+</tr>
 @endforeach
+
 
 
 

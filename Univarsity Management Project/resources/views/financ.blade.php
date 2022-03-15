@@ -71,7 +71,7 @@
                          <td  colspan="5" ><h5> 
   
 
-                        Total Balance: {{$tot}}
+                        Total Balance: {{$balance}}
                            </h5>
                            
                              </td></tr>
@@ -110,7 +110,7 @@
                       <td>{{$t->particulars	}}</td>
                       <td>{{$t->debit}}</td>
                       <td>{{$t->credit}}</td>
-                      <td>{{$t->balance}}</td>
+                      <td>{{$balance}}</td>
                    
                       
                       

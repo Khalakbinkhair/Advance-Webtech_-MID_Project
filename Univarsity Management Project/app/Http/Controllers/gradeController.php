@@ -10,6 +10,8 @@ use app\Models\fac;
 
 class gradeController extends Controller
 {
+  
+
    public function list(){
 
     $offer=offer::all();

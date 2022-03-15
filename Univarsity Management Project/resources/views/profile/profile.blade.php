@@ -31,7 +31,7 @@
   #d2{
 	
 	position:  fixed;	
-  top:170px;
+  top:100px;
   left:	450px;
 }
 
@@ -91,7 +91,7 @@
 
     
 </table>
-<a href='../dashboard'style="color:black" class="btn btn-outline-secondary">Back</a>
+<a href='../login'style="color:black" class="btn btn-outline-secondary">Back</a>
                           <a href='edit'style="color:blue" class="btn btn-outline-primary">Edit</a>
 </div>
 @endsection
